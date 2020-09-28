@@ -5,7 +5,9 @@ import pydeck as pdk
 import plotly.express as px
 
 
-DATA_URL="Motor_Vehicle_Collisions_-_Crashes.csv"
+DATA_URL = "Motor_Vehicle_Collisions_-_Crashes.csv"
+temp = pd.read_csv(DATA_URL)
+print(temp.head())
 
 st.title("Motor Vehicle Collision in New York City")
 st.markdown("This application is a Streamlit Dashboard that can be used"
@@ -13,8 +15,7 @@ st.markdown("This application is a Streamlit Dashboard that can be used"
 
 @st.cache(persist=True)
 
-temp = pd.read_csv(DATA_URL,nrows=50)
-print(temp.head())
+
 def load_data(nrows):
     data=pd.read_csv(DATA_URL,nrows=nrows, parse_dates=[['CRASH_DATE','CRASH_TIME']])
     print(data.columns)
