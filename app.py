@@ -13,7 +13,7 @@ st.title("Motor Vehicle Collision in New York City")
 st.markdown("This application is a Streamlit Dashboard that can be used"
 "to analyze the motor vehicle collisions in NYC")
 
-@st.cache(persist=True)
+
 
 
 def load_data(nrows):
@@ -24,6 +24,8 @@ def load_data(nrows):
     data.rename(lowercase,axis='columns',inplace=True)
     data.rename(columns={'crash_date_crash_time':'date/time'},inplace=True)
     return data
+    
+@st.cache(persist=True)
 
 data= load_data(100000)
 original_data = data
