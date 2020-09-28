@@ -13,7 +13,7 @@ st.markdown("This application is a Streamlit Dashboard that can be used"
 
 @st.cache(persist=True)
 
-temp=pd.read_csv(DATA_URL,nrows=50)
+temp = pd.read_csv(DATA_URL,nrows=50)
 print(temp.head())
 def load_data(nrows):
     data=pd.read_csv(DATA_URL,nrows=nrows, parse_dates=[['CRASH_DATE','CRASH_TIME']])
