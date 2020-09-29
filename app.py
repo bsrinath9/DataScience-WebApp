@@ -23,7 +23,7 @@ def load_data(nrows):
    return data
    
    
-#data = load_data(100000)
+
 
 # def load_data():
 #     data = pd.read_csv('data_cleaned.csv', parse_dates = [['date/time']])
