@@ -6,28 +6,31 @@ import plotly.express as px
 
 
 DATA_URL = "Motor_Vehicle_Collisions_-_Crashes.csv"
-temp = pd.read_csv(DATA_URL)
-print(temp.head())
 
 st.title("Motor Vehicle Collision in New York City")
 st.markdown("This application is a Streamlit Dashboard that can be used"
 "to analyze the motor vehicle collisions in NYC")
 
-
-
-
-def load_data(nrows):
-    data=pd.read_csv(DATA_URL,nrows=nrows, parse_dates=[['CRASH_DATE','CRASH_TIME']])
-    print(data.columns)
-    data.dropna(subset=['LATITUDE','LONGITUDE'],inplace=True)
-    lowercase= lambda x:str(x).lower()
-    data.rename(lowercase,axis='columns',inplace=True)
-    data.rename(columns={'crash_date_crash_time':'date/time'},inplace=True)
-    return data
-    
 @st.cache(persist=True)
 
-data = load_data(100000)
+def load_data(nrows):
+   data=pd.read_csv(DATA_URL,nrows=nrows, parse_dates=[['CRASH_DATE','CRASH_TIME']])
+   print(data.columns)
+   data.dropna(subset=['LATITUDE','LONGITUDE'],inplace=True)
+   lowercase= lambda x:str(x).lower()
+   data.rename(lowercase,axis='columns',inplace=True)
+   data.rename(columns={'crash_date_crash_time':'date/time'},inplace=True)
+   return data
+   
+   
+#data = load_data(100000)
+
+# def load_data():
+#     data = pd.read_csv('data_cleaned.csv', parse_dates = [['date/time']])
+#     return data
+# 
+# #data = pd.read_csv('data_cleaned.csv', parse_dates=['date/time'])
+# data = load_data()
 original_data = data
 
 st.header("Where are the most people injured in NYC?")
