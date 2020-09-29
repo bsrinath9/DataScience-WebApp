@@ -27,7 +27,7 @@ def load_data(nrows):
     
 @st.cache(persist=True)
 
-data= load_data(100000)
+data = load_data(100000)
 original_data = data
 
 st.header("Where are the most people injured in NYC?")
